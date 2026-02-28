@@ -30,7 +30,7 @@ app.use(cors({
         if (isAllowed) {
             callback(null, true);
         } else {
-            callback(null, true); 
+            callback(null, true);
         }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -74,10 +74,10 @@ app.use(errorHandler);
 connectMongo()
     .then(() => {
         app.listen(PORT, () => {
-            console.log(`✅ CipherSQLStudio backend running on port ${PORT}`);
+            console.log(`CipherSQLStudio backend running on port ${PORT}`);
         });
     })
     .catch((err) => {
-        console.error('❌ Failed to start server:', err);
+        console.error('Failed to start server:', err);
         process.exit(1);
     });
