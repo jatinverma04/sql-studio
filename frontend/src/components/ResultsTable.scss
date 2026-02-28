@@ -1,0 +1,192 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.results-table {
+    @include flex-col;
+    min-height: 280px;
+    background: $color-bg-secondary;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    overflow: hidden;
+
+    @include md {
+        flex: 1;
+        min-height: 0;
+    }
+
+    &--empty {
+        @include flex-center;
+        min-height: 160px;
+    }
+
+    &--error {
+        @include flex-col($gap: $space-3);
+        padding: $space-4;
+    }
+
+    // Error
+    &__error-header {
+        @include flex-row($gap: $space-2, $align: center);
+    }
+
+    &__error-icon {
+        font-size: $font-size-lg;
+    }
+
+    &__error-title {
+        font-weight: $font-weight-semibold;
+        color: $color-red;
+        font-size: $font-size-sm;
+    }
+
+    &__error-msg {
+        background: rgba($color-red, 0.07);
+        border: 1px solid rgba($color-red, 0.2);
+        border-radius: $radius-md;
+        padding: $space-3;
+        font-family: $font-mono;
+        font-size: $font-size-xs;
+        color: $color-red;
+        white-space: pre-wrap;
+        word-break: break-word;
+        line-height: 1.6;
+    }
+
+    // Loading Spinner
+    &__spinner {
+        @include flex-col($gap: $space-3, $align: center);
+        color: $color-text-secondary;
+        font-size: $font-size-sm;
+
+        .spinner {
+            color: $color-accent-amber;
+            font-size: 1.5rem;
+        }
+    }
+
+    // Empty/Placeholder
+    &__placeholder {
+        @include flex-col($gap: $space-2, $align: center);
+        text-align: center;
+        padding: $space-6;
+        color: $color-text-muted;
+
+        p {
+            font-size: $font-size-sm;
+            font-weight: $font-weight-medium;
+            color: $color-text-secondary;
+        }
+
+        span {
+            font-size: $font-size-xs;
+        }
+    }
+
+    // Meta Bar
+    &__meta {
+        @include flex-row($gap: $space-4, $justify: space-between, $align: center);
+        padding: $space-2 $space-4;
+        background: $color-bg-tertiary;
+        border-bottom: 1px solid $color-border;
+        font-size: $font-size-xs;
+        min-height: 36px;
+    }
+
+    &__row-count {
+        color: $color-emerald;
+        font-weight: $font-weight-semibold;
+    }
+
+    &__col-count {
+        color: $color-text-muted;
+    }
+
+    &__scroll {
+        overflow: auto;
+        flex: 1;
+        @include custom-scrollbar;
+    }
+
+    // Table
+    &__table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: $font-size-sm;
+    }
+
+    &__th {
+        position: sticky;
+        top: 0;
+        background: $color-bg-tertiary;
+        color: $color-text-secondary;
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-xs;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        padding: $space-2 $space-3;
+        text-align: left;
+        white-space: nowrap;
+        border-bottom: 1px solid $color-border;
+        z-index: 1;
+    }
+
+    &__row-num {
+        @extend .results-table__th;
+        color: $color-text-muted;
+        text-align: right;
+        width: 40px;
+
+        &--body {
+            font-family: $font-mono;
+            font-size: $font-size-xs;
+            color: $color-text-muted;
+            background: $color-bg-primary;
+            top: unset;
+            position: unset;
+            border-top: none;
+        }
+    }
+
+    &__tr {
+        border-bottom: 1px solid $color-border-light;
+        transition: background $transition-fast;
+
+        &:hover {
+            background: $color-bg-tertiary;
+        }
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+
+    &__td {
+        padding: $space-2 $space-3;
+        color: $color-text-primary;
+        font-family: $font-mono;
+        font-size: $font-size-xs;
+        white-space: nowrap;
+        max-width: 280px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    &__null {
+        color: $color-text-muted;
+        font-style: italic;
+        font-size: $font-size-xs;
+    }
+
+    &__bool {
+        font-size: $font-size-xs;
+        font-weight: $font-weight-semibold;
+
+        &--true {
+            color: $color-emerald;
+        }
+
+        &--false {
+            color: $color-red;
+        }
+    }
+}

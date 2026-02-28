@@ -1,0 +1,209 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.schema-viewer {
+    @include flex-col;
+    height: 100%;
+    background: $color-bg-secondary;
+    border: 1px solid $color-border;
+    border-radius: $radius-lg;
+    overflow: hidden;
+
+    &--empty {
+        @include flex-center;
+        color: $color-text-muted;
+        font-size: $font-size-sm;
+        padding: $space-6;
+    }
+
+    // Tabs
+    &__tabs {
+        @include flex-row($gap: 0);
+        overflow-x: auto;
+        border-bottom: 1px solid $color-border;
+        background: $color-bg-primary;
+        @include custom-scrollbar(4px);
+    }
+
+    &__tab {
+        @include flex-row($gap: $space-1, $align: center);
+        padding: $space-2 $space-4;
+        background: none;
+        border: none;
+        border-bottom: 2px solid transparent;
+        color: $color-text-muted;
+        font-family: $font-mono;
+        font-size: $font-size-xs;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all $transition-fast;
+
+        &:hover {
+            color: $color-text-primary;
+            background: $color-bg-tertiary;
+        }
+
+        &--active {
+            color: $color-accent-amber !important;
+            border-bottom-color: $color-accent-amber !important;
+            background: $color-bg-secondary !important;
+        }
+    }
+
+    &__tab-icon {
+        font-size: 10px;
+        opacity: 0.6;
+    }
+
+    // Mode Toggle
+    &__mode-toggle {
+        @include flex-row($gap: $space-1);
+        padding: $space-2 $space-3;
+        border-bottom: 1px solid $color-border;
+        background: $color-bg-secondary;
+    }
+
+    &__mode-btn {
+        @include btn-base;
+        background: none;
+        color: $color-text-muted;
+        font-size: $font-size-xs;
+        padding: $space-1 $space-3;
+        border-radius: $radius-sm;
+
+        &:hover {
+            background: $color-bg-tertiary;
+            color: $color-text-primary;
+        }
+
+        &--active {
+            background: $color-bg-tertiary !important;
+            color: $color-text-primary !important;
+        }
+    }
+
+    // Content Area
+    &__content {
+        flex: 1;
+        overflow: auto;
+        @include custom-scrollbar;
+    }
+
+    // Schema Table
+    &__schema {
+        padding: 0;
+    }
+
+    &__table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: $font-size-xs;
+
+        thead tr {
+            background: $color-bg-tertiary;
+
+            th {
+                padding: $space-2 $space-3;
+                text-align: left;
+                font-weight: $font-weight-semibold;
+                color: $color-text-muted;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                border-bottom: 1px solid $color-border;
+            }
+        }
+
+        tbody tr {
+            border-bottom: 1px solid $color-border-light;
+
+            &:hover {
+                background: $color-bg-tertiary;
+            }
+
+            &:last-child {
+                border-bottom: none;
+            }
+        }
+
+        td {
+            padding: $space-2 $space-3;
+            color: $color-text-secondary;
+        }
+    }
+
+    &__col-name {
+        font-family: $font-mono;
+        color: $color-text-primary !important;
+    }
+
+    // Data Preview
+    &__preview {
+        @include flex-col;
+    }
+
+    &__data-scroll {
+        overflow: auto;
+        @include custom-scrollbar;
+    }
+
+    &__data-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: $font-mono;
+        font-size: $font-size-xs;
+
+        thead th {
+            background: $color-bg-tertiary;
+            padding: $space-2 $space-3;
+            text-align: left;
+            color: $color-text-secondary;
+            font-size: 10px;
+            text-transform: uppercase;
+            border-bottom: 1px solid $color-border;
+            white-space: nowrap;
+        }
+
+        tbody {
+            tr {
+                border-bottom: 1px solid $color-border-light;
+
+                &:hover {
+                    background: $color-bg-tertiary;
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+
+            td {
+                padding: $space-1 $space-3;
+                color: $color-text-primary;
+                white-space: nowrap;
+                max-width: 160px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+
+    &__null {
+        color: $color-text-muted;
+        font-style: italic;
+    }
+
+    &__no-data,
+    &__preview-note {
+        padding: $space-2 $space-3;
+        font-size: $font-size-xs;
+        color: $color-text-muted;
+        text-align: center;
+        font-style: italic;
+    }
+}
+
+.type-badge {
+    font-family: $font-mono;
+    font-size: 10px;
+    font-weight: $font-weight-semibold;
+}

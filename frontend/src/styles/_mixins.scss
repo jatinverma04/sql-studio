@@ -1,0 +1,143 @@
+@use 'variables' as *;
+
+@mixin sm {
+    @media (min-width: #{$bp-sm}) {
+        @content;
+    }
+}
+
+@mixin md {
+    @media (min-width: #{$bp-md}) {
+        @content;
+    }
+}
+
+@mixin lg {
+    @media (min-width: #{$bp-lg}) {
+        @content;
+    }
+}
+
+@mixin flex-row($gap: 0, $align: center, $justify: flex-start) {
+    display: flex;
+    flex-direction: row;
+    align-items: $align;
+    justify-content: $justify;
+    gap: $gap;
+}
+
+@mixin flex-col($gap: 0, $align: stretch) {
+    display: flex;
+    flex-direction: column;
+    align-items: $align;
+    gap: $gap;
+}
+
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+@mixin text-overflow-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+@mixin glass-card($border-color: $color-border) {
+    background: $color-bg-secondary;
+    border: 1px solid $border-color;
+    border-radius: $radius-lg;
+    box-shadow: $shadow-md;
+}
+
+
+@mixin btn-base {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: $space-2;
+    padding: $space-2 $space-5;
+    border: none;
+    border-radius: $radius-md;
+    font-family: $font-sans;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: all $transition-fast;
+    text-decoration: none;
+    white-space: nowrap;
+    user-select: none;
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+
+@mixin custom-scrollbar($width: 6px) {
+    scrollbar-width: thin;
+    scrollbar-color: $color-border $color-bg-primary;
+
+    &::-webkit-scrollbar {
+        width: $width;
+        height: $width;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $color-bg-primary;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $color-border;
+        border-radius: $radius-full;
+
+        &:hover {
+            background: $color-bg-hover;
+        }
+    }
+}
+
+@mixin difficulty-badge($color, $bg-color) {
+    color: $color;
+    background: $bg-color;
+    border: 1px solid rgba($color, 0.3);
+    padding: 2px $space-2;
+    border-radius: $radius-full;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+
+@mixin focus-ring($color: $color-accent-amber) {
+    &:focus-visible {
+        outline: 2px solid $color;
+        outline-offset: 2px;
+    }
+}
+
+
+@mixin shimmer {
+    background: linear-gradient(90deg,
+            $color-bg-secondary 25%,
+            $color-bg-tertiary 50%,
+            $color-bg-secondary 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
