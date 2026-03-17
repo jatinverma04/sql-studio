@@ -1,4 +1,4 @@
-# CipherSQLStudio
+# SQL Studio
 
 > A browser-based SQL learning platform where students practice queries against real PostgreSQL datasets with intelligent AI hints.
 
@@ -7,7 +7,7 @@
 ## Project Structure
 
 ```
-cipherSqlStudio/
+SQL Studio/
 ├── backend/         # Node.js + Express API
 │   ├── src/
 │   │   ├── config/       # PostgreSQL + MongoDB connections

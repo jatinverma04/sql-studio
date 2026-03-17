@@ -74,7 +74,7 @@ app.use(errorHandler);
 connectMongo()
     .then(() => {
         app.listen(PORT, () => {
-            console.log(`CipherSQLStudio backend running on port ${PORT}`);
+            console.log(`SQL Studio backend running on port ${PORT}`);
         });
     })
     .catch((err) => {

@@ -21,7 +21,7 @@ const Navbar = () => {
                         </svg>
                     </div>
                     <div className="navbar__logo-text">
-                        <span className="navbar__logo-name">CipherSQL</span>
+                        <span className="navbar__logo-name">SQL</span>
                         <span className="navbar__logo-tag">Studio</span>
                     </div>
                 </Link>
@@ -35,17 +35,7 @@ const Navbar = () => {
                     </div>
                 )}
 
-                {/* Right */}
-                <div className="navbar__right">
-                    <a
-                        href="https://cipherschools.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="navbar__badge"
-                    >
-                        CipherSchools
-                    </a>
-                </div>
+
             </div>
         </nav>
     );
