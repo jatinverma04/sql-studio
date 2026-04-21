@@ -52,6 +52,9 @@ app.get('/health', (req, res) => {
     });
 });
 
+app.head('/health', (req, res) => {
+    res.status(200).end();
+});
 
 app.use('/api/assignments', assignmentRoutes);
 
